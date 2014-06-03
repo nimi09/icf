@@ -1,0 +1,52 @@
+<% provide(:title, @member.username + "s rentals") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+			<div class="span12">
+				<h1>Total rentals: <%= @rentals.count %></h1>
+				<hr>		
+			</div>
+		</div>
+
+		<div class="row">
+
+			<%= render 'shared/sidebar_member_menu' %>
+
+			<div class="span9">
+
+				<% unless @rentals.count == 0 %>
+					<ul class="rentals_list">
+						<% @rentals.each do |r| %>
+							<li>
+								<a href=<%= "/rentals/#{r.id}" %>>
+									<div><%= r.description %></div>
+									<div>
+										<% if r.first_date.year == r.last_date.year %>
+											<%= r.first_date.strftime("%d. %m.") %> - <%= r.last_date.strftime("%d. %m. %Y") %>
+										<% else %>
+											<%= r.first_date.strftime("%d. %m. %Y") %> - <%= r.last_date.strftime("%d. %m. %Y") %>
+										<% end %>
+									</div>
+									<div><%= number_with_precision(r.amount, :precision => 2) %> <%= current_project.currency %></div>
+								</a>
+							</li>
+						<% end %>	
+					</ul>
+				<% else %>
+					<%= @member.username %> has not added any rentals yet.
+				<% end %>
+
+			</div>
+		</div>	<!-- row -->
+		
+	</div>
+</div>

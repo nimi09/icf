@@ -1,0 +1,7 @@
+		<div class="row">
+			<div class="span12">
+				<h1>
+					<%= link_to current_user.username, current_user, class: "head-user-name-link" %> <% if current_user.username != yield(:title) %> / <%= yield(:title) %> <%end%>
+				</h1>				
+			</div>
+		</div>

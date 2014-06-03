@@ -1,0 +1,66 @@
+<% provide(:title, "Crew Members") %>
+<% provide(:header_r, "Crew Members") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+
+			<%= render 'shared/project_sidebar_menu' %>
+
+			<div class="span9">
+				<h3 class="text-center"><%= current_project.assigned_projects.count %> Crew Members</h3>
+				<hr>
+				<ul class="member_block">
+<!--					<li><ul><li><span class="member_name">Username</span></li><li><span>Expenses</span></li></ul></li>-->
+					<% @members.each do |m| %>
+						<li>
+							<ul>
+								<li>
+									<span class="member_name"><%= m.username %></span>
+									<span class="member_position">
+										<%= m.assigned_projects.find_by_project_id(current_project.id).position %>
+									</span>
+								</li>
+								<li class="values_standards">
+									<span><%= number_with_precision(current_project.expenses.where(user_id: m.id).sum(:amount), :precision => 2) %>
+									</span>
+								</li>
+								<li class="icon member_expenses_icon"></li>
+								<li class="values_standards">
+									<span>
+										<%= number_with_precision(current_project.rentals.where(user_id: m.id).sum(:amount), :precision => 2) %>
+									</span>
+								</li>
+								<li class="icon member_rental_icon"></li>
+								<li class="values_standards">
+									<span>
+										<%= number_with_precision( current_project.workinghours.where(user_id: m.id).sum(:hours) + (current_project.workinghours.where(user_id: m.id).sum(:minutes).to_f / 60), :precision => 2 ) %> h
+									</span>
+								</li>
+								<li class="icon member_workinghours_icon"></li>
+								<li class="values_standards revenue_list">
+									<span>
+
+											<%= number_with_precision( calculate_user_income(@total_expenses, @total_rentals, @total_workinghours, @total_revenues, m), precision: 2 ) %>
+
+									</span>
+								</li>
+								<li class="icon member_revenue_icon"></li>
+							</ul>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+
+		</div><!-- row -->
+		
+	</div>	
+</div>

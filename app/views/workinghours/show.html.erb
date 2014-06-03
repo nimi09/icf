@@ -1,0 +1,59 @@
+<% provide(:title, "Show single working hour") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+
+	<div style="display: block; background: rgba(0,0,0,.5); top: 20px; line-height: 40px;">
+		<div class="container">
+			<%= link_to raw("<i class=\"icon-chevron-left icon-white\" style=\"top: 3px;\"></i> back"), "/projects/#{current_project.id}/member/#{@member.id}/workinghours", class: "back_to_link" %>
+		</div>
+	</div>
+
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+			
+			<div class="span2"></div>
+
+			<div class="span8">
+
+				<div class="well">
+
+					<table class="table table-bordered" style="background: white;">
+						<tr>
+							<td>Member:</td>
+							<td><%= @member.username %></td>
+						</tr>
+						<tr>
+							<td width="150px">Remarks:</td>
+							<td><%= @workinghour.remarks %></td>
+						</tr>
+						<tr>
+							<td>Hours:</td>
+							<td><%= @workinghour.hours %> h</td>
+						</tr>
+						<tr>
+							<td>Minutes:</td>
+							<td><%= @workinghour.minutes %> min</td>
+						</tr>
+						<tr>
+							<td>Date:</td>
+							<td><%= @workinghour.date.strftime("%d. %m. %Y") %></td>
+						</tr>
+					</table>
+					
+					<%= link_to "Edit working hour", edit_workinghour_path, class: "btn-medium btn-blue" %>
+
+				</div>
+
+			</div>
+
+		</div>	<!-- row -->
+		
+	</div>
+</div>

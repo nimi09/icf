@@ -1,0 +1,75 @@
+<% provide(:title, "Edit Working Hour") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		 <div class="row">
+
+			<div class="span4 offset4">
+				<%= form_for(@workinghour) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<%= f.label :date, raw("Date (dd/mm/yy) <i class=\"icon-question-sign\"><span>Date of working day</span></i>") %>
+					<%= f.text_field :date, value: @workinghour.date.strftime("%d/%m/%Y"), class: "datepicker", size: "10", maxlength: "10" %>
+
+					<div style="display: inline-block; width: 45%;">
+					<%= f.label :hours, raw("Hours  <i class=\"icon-question-sign\"><span>How many hours have you worked?</span></i>") %>
+					<%= f.select :hours, [ 	[  "0",  0 ],
+											[  "1",  1 ],
+											[  "2",  2 ],
+											[  "3",  3 ],
+											[  "4",  4 ],
+											[  "5",  5 ],
+											[  "6",  6 ],
+											[  "7",  7 ],
+											[  "8",  8 ],
+											[  "9",  9 ],
+											[ "10", 10 ],
+											[ "11", 11 ],
+											[ "12", 12 ],
+											[ "13", 13 ],
+											[ "14", 14 ],
+											[ "15", 15 ],
+											[ "16", 16 ],
+											[ "17", 17 ],
+											[ "18", 18 ],
+											[ "19", 19 ],
+											[ "20", 20 ],
+											[ "21", 21 ],
+											[ "22", 22 ],
+											[ "23", 23 ],
+											[ "24", 24 ]
+					 ] %>
+					 </div>
+
+					<div style="display: inline-block; width: 45%; float: right;">
+					<%= f.label :minutes, raw("Minutes <i class=\"icon-question-sign\"><span>How many minutes in the last hour</span></i>") %>
+					<%= f.select :minutes, [ 	[  "0",  0 ],
+												[ "15", 15 ],
+												[ "30", 30 ],
+												[ "45", 45 ]
+					 ] %>
+					 </div>
+
+					 <%= f.label :remarks, raw("Remarks (optinal) <i class=\"icon-question-sign\"><span>What were you working on, why did it take that long, or anything else to remark</span></i>") %>
+					 <%= f.text_field :remarks %>
+
+
+					<%= f.submit "Update Working Hour" %>
+
+				<% end %>
+			</div>
+
+		 </div> <!-- row -->
+
+	</div>
+</div>
+

@@ -1,0 +1,12 @@
+			<div class="span3">
+				<ul class="user_side_menu">
+					<li><%= link_to "Expenses", "/projects/" + current_project.id.to_s + "/member/" + params[:uid] + "/expenses" %></li>
+					<li><%= link_to "Rentals", "/projects/" + current_project.id.to_s + "/member/" + params[:uid] + "/rentals" %></li>
+					<li><%= link_to "Working Hours", "/projects/" + current_project.id.to_s + "/member/" + params[:uid] + "/workinghours" %></li>
+
+					<% if @member.id == current_project.creator_id %>
+						<li><%= link_to "Revenues", "/projects/" + current_project.id.to_s + "/member/" + params[:uid] + "/revenues" %></li>
+					<% end %>
+
+				</ul>
+			</div>

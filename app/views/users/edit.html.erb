@@ -1,0 +1,41 @@
+<% provide(:title, "Settings") %>
+<% provide(:header_r, "Settings") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/user_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+
+			<%= render 'shared/user_sidebar_menu' %>
+
+			<div class="span4 offset1">
+				<%= form_for(@user) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<%= f.label :username %>
+					<%= f.text_field :username %>
+
+					<%= f.label :email %>
+					<%= f.text_field :email %>
+
+					<%= f.label :password %>
+					<%= f.password_field :password %>
+
+					<%= f.label :password_confirmation, "Password Confirmation" %>
+					<%= f.password_field :password_confirmation %>
+
+					<%= f.submit "Save changes", class: "" %>					
+				<% end %>
+			</div>
+		</div>
+		
+	</div>	
+</div>

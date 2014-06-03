@@ -1,0 +1,40 @@
+<% provide(:title, "Add Revenue") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		 <div class="row">
+
+	 		<%= render 'shared/sidebar_menu_revenue' %>
+
+			<div class="span4 offset1">
+				<%= form_for(@revenue) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<%= f.label :description, raw("Description <i class=\"icon-question-sign\"><span>Where did the revnue come from, or what kind of revenue</span></i>") %>
+					<%= f.text_field :description %>
+
+					<%= f.label :amount, raw("Amount in #{current_project.currency} (use \".\" for decimal) <i class=\"icon-question-sign\"><span>1532.34</span></i>") %>
+					<%= f.text_field :amount %>
+
+					<%= f.label :date, raw("Date (dd/mm/yy) <i class=\"icon-question-sign\"><span>Date revenue arrived at your account, or date you added the revenue</span></i>") %>
+					<%= f.text_field :date ,class: "datepicker", size: "10", maxlength: "10" %>
+
+					<%= f.submit "Add Revenue" %>
+
+				<% end %>
+			</div>
+
+		 </div> <!-- row -->
+
+	</div>
+</div>
+

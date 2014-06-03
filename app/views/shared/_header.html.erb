@@ -1,0 +1,10 @@
+<% if content_for?(:header) %>
+
+<div class="block-big-header">
+	<div class="container">
+		<h1><%= yield(:header) %></h1>
+		<h3><%= yield(:subheader) %></h3>
+	</div>
+</div>
+
+<% end %>

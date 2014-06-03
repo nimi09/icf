@@ -1,0 +1,41 @@
+<% provide(:title, "Edit Rental") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		 <div class="row">
+
+			<div class="span4 offset4">
+				<%= form_for(@rental) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<%= f.label :description, raw("Description <i class=\"icon-question-sign\"><span>What and why</span></i>") %>
+					<%= f.text_field :description %>
+
+					<%= f.label :amount_per_day, raw("Amount per day in #{current_project.currency} <i class=\"icon-question-sign\"><span>AMOUNT per Day<br>use \".\" for decimal (153.23)</span></i>") %>
+					<%= f.text_field :amount_per_day %>
+
+					<%= f.label :first_date, raw("First Date (dd/mm/yy)  <i class=\"icon-question-sign\"><span>First day of your rental periode</span></i>") %>
+					<%= f.text_field :first_date, value: @rental.first_date.strftime("%d/%m/%Y"), class: "datepicker", size: "10", maxlength: "10" %>
+
+					<%= f.label :last_date, raw("Last Date (dd/mm/yy) <i class=\"icon-question-sign\"><span>Last day of your rental periode</span></i>") %>
+					<%= f.text_field :last_date, value: @rental.last_date.strftime("%d/%m/%Y"), class: "datepicker-two", size: "10", maxlength: "10" %>
+
+					<%= f.submit "Update Rental" %>
+
+				<% end %>
+			</div>
+
+		 </div> <!-- row -->
+
+	</div>
+</div>
+

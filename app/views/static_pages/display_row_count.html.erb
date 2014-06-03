@@ -1,0 +1,38 @@
+<% provide(:title, "Row Count") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		
+		<div class="row">
+			<div class="span12">
+				<h1>
+					<%= yield(:title) %>
+				</h1>				
+			</div>
+		</div>
+
+	</div>
+
+
+	<div style="display: block; background: rgba(0,0,0,.5); top: 20px; line-height: 40px;">
+		<div class="container">
+			<%= link_to raw("<i class=\"icon-chevron-left icon-white\" style=\"top: 3px;\"></i>home"), current_user, class: "back_to_link" %>
+		</div>
+	</div>
+
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+			<div class="span12">
+				<h3 class="text-center">
+					Rows used:<br>
+					<b><%= @rowcount %></b>
+				</h3>
+			</div>
+		</div>
+
+	</div>
+</div>

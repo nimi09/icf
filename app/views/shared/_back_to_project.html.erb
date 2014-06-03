@@ -1,0 +1,9 @@
+	<div style="display: block; background: rgba(0,0,0,.5); top: 20px; line-height: 40px;">
+		<div class="container">
+			<% if content_for?(:backstring) %>
+				<%= link_to yield(:backstring), url_for(:back), class: "back_to_link" %>
+			<% else %>
+				<%= link_to raw("<i class=\"icon-chevron-left icon-white\" style=\"top: 3px;\"></i>back"), url_for(:back), class: "back_to_link" %>
+			<% end %>
+		</div>
+	</div>

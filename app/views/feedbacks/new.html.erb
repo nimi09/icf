@@ -1,0 +1,93 @@
+<% provide(:title, "Feedback") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		
+		<div class="row">
+			<div class="span12">
+				<h1>
+					<%= yield(:title) %>
+				</h1>				
+			</div>
+		</div>
+
+	</div>
+
+
+	<div style="display: block; background: rgba(0,0,0,.5); top: 20px; line-height: 40px;">
+		<div class="container">
+			<%= link_to raw("<i class=\"icon-chevron-left icon-white\" style=\"top: 3px;\"></i>home"), current_user, class: "back_to_link" %>
+		</div>
+	</div>
+
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+<!--			<div class="span6 offset3"> -->
+			<div class="span6">
+
+				<div style="height: 25px;"></div>
+
+				<%= form_for( @feedback ) do |nf| %>
+
+					<%= render 'shared/error_messages', object: nf.object %>
+
+					<%= nf.label :subject %>
+					<%= nf.text_field :subject %>
+
+					<%= nf.label :content %>
+					<%= nf.text_area :content, rows: "6" %>
+
+					<%= nf.submit "Send feedback" %>
+
+				<% end %>
+			
+<!--			<hr> -->
+			</div>
+			<div class="span6">
+
+				<p class="text-center">
+					<center>
+						<div class="btn-group">
+							<% if @o == "1" %>
+								<a href="/feedbacks/newestfirst" class="btn">newest first</a>
+								<div class="btn disabled">by votes</div>
+							<% else %>
+								<div class="btn disabled">newest first</div>
+								<a href="/feedbacks/byvotes" class="btn">by votes</a>
+							<% end %>
+						</div>
+					</center>
+				</p>
+
+				<ul class="feedback">
+					<% @feedbacks.each do |f| %>
+						<li>
+							<div class="votes_block">
+								<%= link_to raw("<i class=\"icon-chevron-up\"></i>"), "/feedbacks/" + f.id.to_s + "/up", method: "post" %>
+								<h3><%= f.votes %></h3>
+								<%= link_to raw("<i class=\"icon-chevron-down\"></i>"), "/feedbacks/" + f.id.to_s + "/down", method: "post" %>
+							</div>
+							<div class="feedback_block">
+								<% if current_user.admin? %>
+									<div class="pull-right">
+										<%= link_to raw("<i class=\"icon-ok\"></i>"), "/feedbacks/" + f.id.to_s + "/implemented", style: "z-index: 1;" %>
+										&nbsp;
+										<%= link_to raw("<i class=\"icon-remove\"></i>"), f, method: :delete, data: { confirm: "Want to delete this feeback post, are you sure?"}, style: "z-index: 1;" %>
+									</div>
+								<% end %>								<h3><%= f.subject %></h3>
+								<p><%= f.content %></p>
+
+							</div>
+						</li>
+					<% end %>
+				</ul>
+
+			</div>
+		</div>	<!-- row -->
+
+	</div>
+</div>

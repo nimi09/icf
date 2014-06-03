@@ -1,0 +1,31 @@
+<% provide(:title, "Sign up") %>
+<% provide(:header, "Sign up") %>
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+			<div class="span4 offset4">
+				<%= form_for(@user) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<%= f.label :username %>
+					<%= f.text_field :username %>
+
+					<%= f.label :email %>
+					<%= f.text_field :email %>
+
+					<%= f.label :password %>
+					<%= f.password_field :password %>
+
+					<%= f.label :password_confirmation, "Password Confirmation" %>
+					<%= f.password_field :password_confirmation %>
+
+					<%= f.submit "Join for free", class: "" %>					
+
+				<% end %>
+			</div>
+		</div>
+		
+	</div>	
+</div>

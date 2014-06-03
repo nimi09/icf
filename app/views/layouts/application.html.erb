@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title( yield(:title) ) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>    
+</head>
+<body>
+
+<div class="wrapper">
+	<%= render 'layouts/menu' %>
+	<div class="headerspace"></div>
+	<%= render 'shared/header' %>
+	<%= render 'shared/flash_msg' %>
+	<%= yield %>
+ </div>
+
+
+<% if loged_in? && current_user.admin? %>
+
+	<div class="block be-admin-colored">
+		<div class="container">
+
+			<div class="row">
+				<div class="span12">
+					Parameters:<br>
+					<%= debug(params) %>
+				</div>
+			</div>	<!-- row -->
+
+			<hr>
+
+			<div class="row">
+				<div class="span12">
+					User Block:<BR>
+					<% if current_user.nil? %>
+						user = nil!
+					<% else %>
+						<%= current_user.username %>
+					<% end %>
+				</div>
+			</div>	<!-- row -->
+
+			<hr>
+
+			<div class="row">
+				<div class="span12">
+					Project Block:<BR>
+					<% if current_project.nil? %>
+						project: nil!
+					<% else %>
+						<%= current_project.name %>
+					<% end %>
+				</div>
+			</div>	<!-- row -->
+
+		</div>	
+	</div>
+	
+<% end %>
+
+
+<%= render 'layouts/footer' %>
+
+<%= link_to "feedback", new_feedback_path, class: "feedback-side-btn" if loged_in? %>
+
+</body>
+</html>

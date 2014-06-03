@@ -1,0 +1,50 @@
+<% provide(:title, current_project.name) %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+
+		<div class="row">
+
+			<%= render 'shared/project_sidebar_menu' %>
+
+			<div class="span9 clearfix">
+
+				<ul class="project_task_btns" style="display:none;">
+					<li><%= link_to "Add Expenses", new_expense_path,			class: "" %></li>
+					<li><%= link_to "Add Rental", new_rental_path, 				class: "" %></li>
+					<li><%= link_to "Add Working hours", new_workinghour_path,	class: "" %></li>
+					<% if current_project.creator_id == current_user.id %>
+						<li><%= link_to "Add Revenue", new_revenue_path, 		class: "" %></li>
+					<% end %>
+				</ul>
+
+				
+				<a href="/expenses/new" class="btn-blue btn-big" style="padding: 10px 0; height: auto; line-height: 26px; text-align: center; width: 167px; font-size: 16px;"><%= image_tag 'icon-reciept-40x40.png', style: "margin: 0; padding: 0; line-height: 10px;" %><br>Add Expenses</a>
+
+				<a href="/rentals/new" class="btn-blue btn-big" style="padding: 10px 0; height: auto; line-height: 26px; text-align: center; width: 167px; font-size: 16px;"><%= image_tag 'icon-rental-40x40.png', style: "margin: 0; padding: 0; line-height: 10px;" %><br>Add Rental</a>
+
+				<a href="/workinghours/new" class="btn-blue btn-big" style="padding: 10px 0; height: auto; line-height: 26px; text-align: center; width: 167px; font-size: 16px;"><%= image_tag 'icon-workinghours-40x40.png', style: "margin: 0; padding: 0; line-height: 10px;" %><br>Add Working Hours</a>
+
+				<% if current_project.creator_id == current_user.id %>
+					<a href="/revenues/new" class="btn-blue btn-big" style="padding: 10px 0; height: auto; line-height: 26px; text-align: center; width: 167px; font-size: 16px;"><%= image_tag 'icon-revenue-40x40.png', style: "margin: 0; padding: 0; line-height: 10px;" %><br>Add Revenue</a>
+				<% else %>
+					<div style = " display: inline-block; background: #888; padding: 10px 0; height: auto; line-height: 26px; text-align: center; width: 167px; font-size: 16px; vertical-align: top; ">
+						<%= image_tag 'icon-revenue-40x40.png', style: "margin: 0; padding: 0; line-height: 10px; opacity: .5;" %><br>
+						Revenue
+					</div>
+				<% end %>
+
+			</div>
+
+		</div> <!-- row -->
+		
+	</div>	
+</div>

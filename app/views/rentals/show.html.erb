@@ -1,0 +1,63 @@
+<% provide(:title, "Show single rental") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+
+	<div style="display: block; background: rgba(0,0,0,.5); top: 20px; line-height: 40px;">
+		<div class="container">
+			<%= link_to raw("<i class=\"icon-chevron-left icon-white\" style=\"top: 3px;\"></i> back"), "/projects/#{current_project.id}/member/#{@member.id}/rentals", class: "back_to_link" %>
+		</div>
+	</div>
+
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+			
+			<div class="span2"></div>
+
+			<div class="span8">
+
+				<div class="well">
+
+					<table class="table table-bordered" style="background: white;">
+						<tr>
+							<td>Member:</td>
+							<td><%= @member.username %></td>
+						</tr>
+						<tr>
+							<td width="150px">Description:</td>
+							<td><%= @rental.description %></td>
+						</tr>
+						<tr>
+							<td>First Date:</td>
+							<td><%= @rental.first_date.strftime("%d. %m. %Y") %></td>
+						</tr>
+						<tr>
+							<td>Last Date:</td>
+							<td><%= @rental.last_date.strftime("%d. %m. %Y") %></td>
+						</tr>
+						<tr>
+							<td>Amount per day:</td>
+							<td><%= number_with_precision(@rental.amount_per_day, precision: 2)  %> <%= current_project.currency %></td>
+						</tr>
+						<tr>
+							<td>Total Amount:</td>
+							<td><%= number_with_precision(@rental.amount, precision: 2) %> <%= current_project.currency %></td>
+						</tr>
+					</table>
+					
+					<%= link_to "Edit rental", edit_rental_path, class: "btn-medium btn-blue" %>
+
+				</div>
+
+			</div>
+
+		</div>	<!-- row -->
+		
+	</div>
+</div>

@@ -1,0 +1,66 @@
+<div class="block-white block-head-menu">
+	<div class="container">
+		<div class="menu-logo">
+			<a href="/">Independent Crew Funding</a><span class="beta">beta</span>
+		</div>
+
+
+		<ul class="menu-item-ul pull-right">
+
+			<% if loged_in? %>
+				<li id="account-item">
+					<%= link_to current_user.username, current_user %>
+					<div>
+						
+						<ul>
+							<li><%= link_to "Add Project", new_project_path %></li>
+							<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+						</ul>
+
+<!--						<ul>
+							<li><a href="#">abcd</a></li>
+							<li><a href="#">abcd</a></li>
+							<li><a href="#">abcd</a></li>
+						</ul> -->
+
+						<% if current_user.admin? %>
+							<ul class="menu-admin-items">
+								<li><%= link_to "All Users", users_path %></li>
+								<li><%= link_to "Row Count", root_url + "display_row_count" %></li>
+							</ul>
+						<% end %>
+
+						<%= link_to "LOGOUT", logout_path, class: "menu-logout-item", method: "delete" %>
+
+					</div>
+
+				</li>
+			<% else %>
+				<li>
+					<div class="menu-btn menu-btn-blue">
+						<%= link_to "Sign up", signup_path %>
+					</div>
+				</li>
+				<li>
+					<div class="menu-btn">
+						<%= link_to "Log in", login_path %>
+					</div>
+				</li>
+			<% end %>
+
+		</ul>
+
+		<% if loged_in? && active_project? %>
+			<ul class="nav-icons pull-right">
+				<li><%= link_to image_tag("icon-plus-reciept-40x40.png"), new_expense_path %></a></li>
+				<li><%= link_to image_tag("icon-plus-rental-40x40.png"),  new_rental_path %></li>			
+				<li><%= link_to image_tag("icon-plus-workinghours-40x40.png"), new_workinghour_path %></li>			
+				<% if current_project.creator_id == current_user.id %>
+					<li><%= link_to image_tag("icon-plus-revenue-40x40.png"), new_revenue_path %></li>
+				<% end %>
+				<li><%= link_to current_project.name, current_project, class: "nav_current_project_link" %></li>
+			</ul>
+		<% end %>
+		
+	</div>
+</div>

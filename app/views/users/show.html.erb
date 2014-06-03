@@ -1,0 +1,58 @@
+<% provide(:title, current_user.username) %>
+<% provide(:header_disabled, "Daschboard") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/user_header' %>		
+	</div>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+
+			<%= render 'shared/user_sidebar_menu' %>
+
+			<div class="span9">
+
+				<ul class="project-list">
+					<% @projects.each do |p| %>
+						<li><%= link_to p.name, p %></li>
+					<% end %>
+				</ul>
+
+				<% if current_user.admin? %>
+					&nbsp;
+
+					<h3>to do list:</h3>
+					<ul>
+						<li>EDIT Project Details!!!!!!!!</li>
+						<li>User/Dashborg ==> Paginate "show all projects"</li>
+						<li>List All Expenses for a project</li>
+						<li></li>
+						<li>Add Before_Filter for the Views of all Expenses,Retnatl Workinghores </li>
+						<li>Add Before_Filter for View and Edit Expenses!!</li>
+						<li></li>
+						<li>Add info pop up</li>
+						<li>Back btn to Breadcrumps</li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+
+					<h3>Bugs:</h3>
+					<ul>
+						<li>flash message sometime won't disappear<BR>==> Seems to be a bug at Safari v6 and v7</li>
+						<li></li>
+					</ul>
+
+				<% end %>
+
+
+			</div>
+
+		</div><!-- row -->
+
+	</div>	
+</div>

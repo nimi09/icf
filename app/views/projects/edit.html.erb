@@ -1,0 +1,42 @@
+<% provide(:title, "Edit Project Details") %>
+<% provide(:header_r, "Edit Project Details") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+
+			<%= render 'shared/project_sidebar_menu' %>
+
+			<div class="span4 offset1">
+				<%= form_for( current_project ) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<%= f.label :name, raw("Name <i class=\"icon-question-sign\"><span>Name of the PROJECT</span></i>") %>
+					<%= f.text_field :name %>
+
+					<%= f.fields_for :assigned_project, @ap do |ff| %>
+						<%= ff.label :position, raw("Position <i class=\"icon-question-sign\"><span>Your POSITION<br>(eg: Producer, Director, Dop, Editor, ...)</span></i>") %>
+						<%= ff.text_field :position%>
+					<% end %>
+
+					<%= f.label :currency, raw("Currency <i class=\"icon-question-sign\"><span>$, €, £, ... Eur, CHF, ...</span></i>") %>
+					<%= f.text_field :currency %>
+
+					<%= f.submit "Update Project", class: "" %>
+
+				<% end %>
+			</div>
+
+		</div>
+		
+	</div>	
+</div>

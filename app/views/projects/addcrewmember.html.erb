@@ -1,0 +1,39 @@
+<% provide(:title, "Add new Crew Member") %>
+<% provide(:header_r, "Add new Crew Member") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+
+			<%= render 'shared/project_sidebar_menu' %>
+
+			<div class="span4 offset1">
+				<%= form_for @user, :url => assign_invited_user_project_path do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<p style="font-size: 14px;">Please, enter new Crew Member's email <i class="icon-question-sign"><span>Please enter the email of the new crew member</span></i></p>
+					<%= f.text_field :email %>
+
+					<%= f.fields_for :assigned_projects do |ff| %>
+						<%= ff.label :position, raw("Position <i class=\"icon-question-sign\"><span>The members POSITION<br>(eg: Producer, Director, Dop, Editor, ...)</span></i>") %>
+						<%= ff.text_field :position %>
+					<% end %>
+
+					<%= f.submit "Add new Crew Member", class: "" %>					
+
+				<% end %>
+			</div>
+
+		</div><!-- row -->
+
+	</div>	
+</div>

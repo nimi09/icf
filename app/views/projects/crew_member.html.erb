@@ -1,0 +1,37 @@
+<% provide(:title, @member.username) %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+
+	<div style="display: block; background: rgba(0,0,0,.5); top: 20px; line-height: 40px;">
+		<div class="container">
+			<%= link_to "Back to \"Status\"", status_project_path, class: "back_to_link" %>
+		</div>
+	</div>
+
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+
+			<%= render 'shared/sidebar_member_menu' %>
+
+			<div class="span9">
+				<%= @member.username %>
+			</div>
+		</div>	<!-- row -->
+		
+	</div>
+</div>
+
+<% if current_user.admin? %>
+<div class="block be-light-red">
+	<div class="container">
+		<%= debug(params) %>
+	</div>
+</div>
+<% end %>

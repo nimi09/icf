@@ -1,0 +1,40 @@
+<% provide(:title, "Add Expenses") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		 <div class="row">
+
+	 		<%= render 'shared/expenses_sidebar_menu' %>
+
+			<div class="span4 offset1">
+				<%= form_for(@expense) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<%= f.label :description, raw("Description <i class=\"icon-question-sign\"><span>What and why</span></i>") %>
+					<%= f.text_field :description %>
+
+					<%= f.label :amount, raw("Amount in #{current_project.currency} (use \".\" for decimal) <i class=\"icon-question-sign\"><span>153.23</span></i>") %>
+					<%= f.text_field :amount %>
+
+					<%= f.label :date, raw("Date (dd/mm/yy) <i class=\"icon-question-sign\"><span>Date of purchase</span></i>") %>
+					<%= f.text_field :date, id: "datepicker" ,class: "datepicker", size: "10", maxlength: "10" %>
+
+					<%= f.submit "Add Expense" %>
+
+				<% end %>
+			</div>
+
+		 </div> <!-- row -->
+
+	</div>
+</div>
+

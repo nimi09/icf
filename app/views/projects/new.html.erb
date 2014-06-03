@@ -1,0 +1,55 @@
+<% provide(:title, "Create new Project") %>
+<% provide(:header_r, "Create new Project") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/user_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+
+			<%= render 'shared/user_sidebar_menu' %>
+
+			<div class="span4 offset1">
+				<%= form_for( @project ) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
+
+					<%= f.label :name, raw("Name <i class=\"icon-question-sign\"><span>Name of the PROJECT</span></i>") %>
+					<%= f.text_field :name %>
+
+					<%= f.hidden_field :creator_id, value: current_user.id %>
+
+					<%= f.fields_for :assigned_projects, @project.assigned_projects do |ff| %>
+
+						<%= ff.hidden_field :project_id, value: @project %>
+						<%= ff.hidden_field :user_id, value: current_user.id %>
+
+						<%= ff.label :position, raw("Position <i class=\"icon-question-sign\"><span>Your POSITION<br>(eg: Producer, Director, Dop, Editor, ...)</span></i>") %>
+						<%= ff.text_field :position%>
+					<% end %>
+
+					<%= f.label :currency, raw("Currency <i class=\"icon-question-sign\"><span>$, €, £, ... Eur, CHF, ...</span></i>") %>
+					<%= f.text_field :currency %>
+
+					<%= f.submit "Add Project", class: "" %>					
+				<% end %>
+			</div>
+
+		</div>
+		
+	</div>	
+</div>
+
+<% if current_user.admin? %>
+<div class="block be-light-red">
+	<div class="container">
+		<%= debug(params) %>
+	</div>
+</div>
+<% end %>

@@ -1,0 +1,46 @@
+<% provide(:title, @member.username + "s workinghours") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+			<div class="span12">
+				<h1>Total working days: <%= @workinghours.count %></h1>
+				<hr>		
+			</div>
+		</div>
+
+		<div class="row">
+
+			<%= render 'shared/sidebar_member_menu' %>
+
+			<div class="span9">
+
+				<% unless @workinghours.count == 0 %>
+					<ul class="expenses_list">
+						<% @workinghours.each do |wh| %>
+							<li>
+								<a href=<%= "/workinghours/#{wh.id}" %> >
+									<div><%= wh.remarks %></div>
+									<div><%= wh.date.strftime("%d. %m. %Y") %></div>
+									<div><%= wh.hours %>:<%= wh.minutes %> h </div>
+								</a>
+							</li>
+						<% end %>	
+					</ul>
+				<% else %>
+					<%= @member.username %> has not added any workinghours yet.
+				<% end %>
+
+			</div>
+		</div>	<!-- row -->
+		
+	</div>
+</div>

@@ -1,0 +1,46 @@
+<% provide(:title, @member.username + "s expenses") %>
+
+<div class="block block_light_gray">
+	<div class="container">
+		<%= render 'shared/project_header' %>
+	</div>
+	<%= render 'shared/back_to_project' %>
+</div>
+
+<div class="block-white">
+	<div class="container">
+
+		<div class="row">
+			<div class="span12">
+				<h1>Total expenses: <%= @expenses.count %></h1>
+				<hr>		
+			</div>
+		</div>
+
+		<div class="row">
+
+			<%= render 'shared/sidebar_member_menu' %>
+
+			<div class="span9">
+
+				<% unless @expenses.count == 0 %>
+					<ul class="expenses_list">
+						<% @expenses.each do |e| %>
+							<li>
+								<a href=<%= "/expenses/#{e.id}" %> >
+									<div><%= e.description %></div>
+									<div><%= e.date.strftime("%d. %m. %Y") %></div>
+									<div><%= number_with_precision(e.amount, :precision => 2) %> <%= current_project.currency %></div>
+								</a>
+							</li>
+						<% end %>	
+					</ul>
+				<% else %>
+					<%= @member.username %> has not added any expenses yet.
+				<% end %>
+
+			</div>
+		</div>	<!-- row -->
+		
+	</div>
+</div>
