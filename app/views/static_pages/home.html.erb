@@ -23,12 +23,11 @@
 			<div class="span12">
 
 				<h3 class="text-center">
-					Financing your low budget film yourself?
+					Financing your film all by yourself?
 				</h3>
 				<h4 class="text-center">
-					<p>Then you rely on every crew member's effort, advance payments and volunteer work.</p>
-					<p>Increwfu helps you to track your crew's expenses and allows you to equally share your revenues with your crew mates once your film finds distributing channels.</p>
-
+					<p>Then you rely on every crew member's volunteer work and financial support … until you receive a revenue.</p>
+					<p>Increwfu helps you to track your crew's contributions and to organize the pay back amount when revenues come in.</p>
 				</h4>
 
 				<hr>
@@ -36,18 +35,23 @@
 				<h3 class="text-center">Getting Started:</h3>
 				<h4 class="text-center">
 					<p>You create a new project and invite your crew members to the project.</p>
-					<p>Each member can submit their contributions to the film, such as expenses, rentals and working hours.</p>
+					<p>Logged in, each member can submit their contributions to the film, such as expenses, rentals and working hours.</p>
 				</h4>
 
 				<hr>
 
 				<h3 class="text-center">Contributions:</h3>
+				<h4 class="text-center">
+					<p style="display: inline-block; width: 30%; vertical-align: top;">Expenses can be travel, lodging, dining or copyright costs, payments for film locations and music rights etc.</p>
+					<p style="display: inline-block; width: 30%; vertical-align: top;">Rental fees: Rentals are borrowed items such as a microphone or a camera. The rental value of the borrowed item is the rental fee. (Der Satz hinkt noch)</p>
+					<p style="display: inline-block; width: 30%; vertical-align: top;">Working hours are the time duration each crew member puts into the film. </p>
+				</h4>
 
 				<hr>
 
 				<h3 class="text-center">Revenues:</h3>
 				<h4 class="text-center">
-					<p>The revenue will be disseminated proportionally to the three different contribution groups. If the revenue does not cover all contributions, the pay-out of expenses is given priority, followed by rentals and lastly the working hours.</p>
+					<p>If the revenue does not cover all contributions, the pay-outs for the expenses are given priority, followed by rental fees and working hours.</p>
 				</h4>
 
 			</div>
@@ -65,7 +69,7 @@
 
 		<div class="row">
 
-			<center><h1>Manage the crews<br>&nbsp;</h1></center>
+			<center><h1>With INCREWFU you can manage your<br>&nbsp;</h1></center>
 
 			<div class="span3">
 				<center><%= image_tag "icon-reciept-100x100.png" %>
@@ -95,8 +99,14 @@
 
 			<div class="span12">
 				<h3 class="text-center">
-					Start your project TODAY with the tools and equipment your crew members have. Share the revenue equally as percentage to each crew members effort.
+					Start your project TODAY with the tools and equipment your crew members have. And share the revenue equally as percentage to each crew members contributions.
 				</h3>
+				<% if not loged_in? %>
+					<br>
+					<center>
+						<%= link_to "Sign up now!", signup_path, class: "btn-blue btn-big" %>
+					</center>
+				<% end %>
 			</div>
 
 		</div> <!-- row -->
