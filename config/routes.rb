@@ -57,6 +57,7 @@ Icf::Application.routes.draw do
   match '/logout', to: 'sessions#destroy', via: 'delete'
 
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/faq', to: 'static_pages#faq', via: 'get'
 
   match '/display_row_count', to: 'static_pages#display_row_count', via: 'get'
 

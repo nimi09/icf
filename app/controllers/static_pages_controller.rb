@@ -8,6 +8,9 @@ class StaticPagesController < ApplicationController
 	def contact
 	end
 
+	def faq
+	end
+
 	def display_row_count
 		@rowcount = User.count + Project.count + AssignedProject.count + Expense.count + Rental.count + Workinghour.count + Revenue.count + Feedback.count
 	end
