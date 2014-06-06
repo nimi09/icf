@@ -4,7 +4,16 @@
 
 		<div class="row">
 			<div class="span6">
-				<h3 class="featured_img_white_box ">Fund your <b>independent film projects</b> through your crew mates and distribute the revenue as percentage to each member and their amount of individual effort.</h3>
+<!--				<h3 class="featured_img_white_box ">Fund your <b>independent film projects</b> through your crew mates and distribute the revenue as percentage to each member and their amount of individual effort.</h3>
+-->
+
+				<h3><b>Financing your film all by yourself?</b></h3>
+				<h4 style="line-height: 30px;">
+					Then you rely on every crew member's volunteer work and financial support … until you receive a revenue.<br>
+					<b>Increwfu</b> helps you to track your crew's contributions and to organize the pay back amount when revenues come in.
+				</h4>
+
+
 				<% if not loged_in? %>
 					<br>
 					<%= link_to "Sign up now!", signup_path, class: "btn-blue btn-big" %>
@@ -22,7 +31,7 @@
 
 			<div class="span12">
 
-				<h3 class="text-center">
+<!--				<h3 class="text-center">
 					Financing your film all by yourself?
 				</h3>
 				<h4 class="text-center">
@@ -31,7 +40,7 @@
 				</h4>
 
 				<hr>
-
+-->
 				<h3 class="text-center">Getting Started:</h3>
 				<h4 class="text-center">
 					<p>You create a new project and invite your crew members to the project.</p>
@@ -42,9 +51,9 @@
 
 				<h3 class="text-center">Contributions:</h3>
 				<h4 class="text-center">
-					<p style="display: inline-block; width: 30%; vertical-align: top;">Expenses can be travel, lodging, dining or copyright costs, payments for film locations and music rights etc.</p>
-					<p style="display: inline-block; width: 30%; vertical-align: top;">Rental fees: Rentals are borrowed items such as a microphone or a camera. The rental value of the borrowed item is the rental fee.</p>
-					<p style="display: inline-block; width: 30%; vertical-align: top;">Working hours are the time duration each crew member puts into the film. </p>
+					<p style="display: inline-block; width: 30%; vertical-align: top;"><b>Expenses</b><br><br>All real costs like travel, props, lunch, accomodation, etc.</p>
+					<p style="display: inline-block; width: 30%; vertical-align: top;"><b>Rentals</b><br><br>Borrowed items such as a microphone, camera, edeting suit/laptop.</p>
+					<p style="display: inline-block; width: 30%; vertical-align: top;"><b>Working hours</b><br><br>The time duration each crew member puts into the film.</p>
 				</h4>
 
 				<hr>
@@ -101,12 +110,6 @@
 				<h3 class="text-center">
 					Start your project TODAY with the tools and equipment your crew members have. And share the revenue equally as percentage to each crew members contributions.
 				</h3>
-				<% if not loged_in? %>
-					<br>
-					<center>
-						<%= link_to "Sign up now!", signup_path, class: "btn-blue btn-big" %>
-					</center>
-				<% end %>
 			</div>
 
 		</div> <!-- row -->
