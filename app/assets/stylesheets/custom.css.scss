@@ -98,7 +98,8 @@ footer {
 .featured_img {
   padding-top: 50px;
   min-height: 400px;
-  background-color: #222;
+//  background-color: #222;
+  background-color: #2e0e37;
 //  background: url('Unknown.jpg') no-repeat top center;
 //  background: url('bg-header-03.png') repeat center; /**/
 //  background: url('Homeric-Pictures-Production.jpg') no-repeat top center;
@@ -142,6 +143,7 @@ footer {
 }
 
 .be-light-blue {
+  color: #fff;
   background: $btn-blue-light; // light blue
 }
 
