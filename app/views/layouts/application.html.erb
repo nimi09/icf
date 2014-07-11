@@ -23,6 +23,10 @@
 	<div class="block be-admin-colored">
 		<div class="container">
 
+			<h1>ADMINISTRATION AREA</h1>
+
+			<hr>
+
 			<div class="row">
 				<div class="span12">
 					Parameters:<br>
@@ -53,6 +57,14 @@
 					<% else %>
 						<%= current_project.name %>
 					<% end %>
+				</div>
+			</div>	<!-- row -->
+
+			<hr>
+
+			<div class="row">
+				<div class="span12">
+					<%= render 'shared/todo_list' %>
 				</div>
 			</div>	<!-- row -->
 

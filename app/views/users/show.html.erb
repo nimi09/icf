@@ -16,39 +16,20 @@
 
 			<div class="span9">
 
-				<ul class="project-list">
-					<% @projects.each do |p| %>
-						<li><%= link_to p.name, p %></li>
-					<% end %>
-				</ul>
+				<% if @projects.count > 0 %>
 
-				<% if current_user.admin? %>
-					&nbsp;
-
-					<h3>to do list:</h3>
-					<ul>
-						<li>EDIT Project Details!!!!!!!!</li>
-						<li>User/Dashborg ==> Paginate "show all projects"</li>
-						<li>List All Expenses for a project</li>
-						<li></li>
-						<li>Add Before_Filter for the Views of all Expenses,Retnatl Workinghores </li>
-						<li>Add Before_Filter for View and Edit Expenses!!</li>
-						<li></li>
-						<li>Add info pop up</li>
-						<li>Back btn to Breadcrumps</li>
-						<li></li>
-						<li></li>
-						<li></li>
+					<ul class="project-list">
+						<% @projects.each do |p| %>
+							<li><%= link_to p.name, p %></li>
+						<% end %>
 					</ul>
 
-					<h3>Bugs:</h3>
-					<ul>
-						<li>flash message sometime won't disappear<BR>==> Seems to be a bug at Safari v6 and v7</li>
-						<li></li>
-					</ul>
+				<% else %>
+
+					<h3 style="margin-top: 0; line-height: 40px;">No project available.</h3>
+
 
 				<% end %>
-
 
 			</div>
 
