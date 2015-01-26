@@ -12,7 +12,12 @@ class StaticPagesController < ApplicationController
 	end
 
 	def display_row_count
+#       Old custom Method => probably not 100% accurate
 		@rowcount = User.count + Project.count + AssignedProject.count + Expense.count + Rental.count + Workinghour.count + Revenue.count + Feedback.count
+
+#       New Method => probaly the correct way to do it
+        st=0; ActiveRecord::Base.send(:subclasses).each {|sc| begin; st += sc.all.size unless sc.all.nil?; rescue ActiveRecord::StatementInvalid; end; };
+        @trows = st.to_s;
 	end
 
 	private
